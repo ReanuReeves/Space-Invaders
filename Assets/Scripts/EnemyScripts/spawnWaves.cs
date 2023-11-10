@@ -35,7 +35,21 @@ public class spawnWaves : MonoBehaviour
             GetComponent<moveEnemys>().SetMovementInstructions(enemyContainer, "Horizontal");
         }
 
-        if(currentEnemys == 0 && enemyContainer != null)
+        if (Input.GetKey(KeyCode.O) && !waveAlive)
+        {
+            waveAlive = true;
+            enemyContainer = GetComponent<SpawnEnemy>().SpawnWaveHorizontal(20, 34, 0, 4, 1, "basicShip");
+            GetComponent<moveEnemys>().SetMovementInstructions(enemyContainer, "Horizontal");
+        }
+
+        if (Input.GetKey(KeyCode.I) && !waveAlive)
+        {
+            waveAlive = true;
+            enemyContainer = GetComponent<SpawnEnemy>().SpawnWaveHorizontal(34, 15, 0, 4, 3, "basicShip");
+            GetComponent<moveEnemys>().SetMovementInstructions(enemyContainer, "Horizontal");
+        }
+
+        if (currentEnemys == 0 && enemyContainer != null)
         {
             waveAlive = false;
             Destroy(enemyContainer, 1f);
